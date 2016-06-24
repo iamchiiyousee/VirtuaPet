@@ -37,7 +37,8 @@ namespace ConsoleApplication9
             Console.WriteLine("1: Feed");
             Console.WriteLine("2: Hydrate");
             Console.WriteLine("3: Let it poop/pee");
-            Console.WriteLine("4: Play");
+            Console.WriteLine("4: Play ");
+
         }
 
     }
