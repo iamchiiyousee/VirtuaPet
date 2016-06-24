@@ -12,6 +12,7 @@ namespace ConsoleApplication9
         {
             VirtuaPet myPet = new VirtuaPet();
 
+
             Console.WriteLine("Welcome to VirtuaPet.\nPlease enter the name of your pet.");
 
 
@@ -19,9 +20,15 @@ namespace ConsoleApplication9
 
             Console.WriteLine("\nCongratulations, welcome {0} into the world!\n", myPet.Name);
 
-            myPet.DisplayStats();
-            myPet.ActionMenu();
-            Console.ReadKey();
+            while (true)
+            {
+                myPet.DisplayStats();
+                myPet.Tick();
+                myPet.ActionMenu();
+               
+            }
+
+            //Console.ReadKey();
          }
 
 

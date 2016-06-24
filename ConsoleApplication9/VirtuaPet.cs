@@ -14,6 +14,10 @@ namespace ConsoleApplication9
         public bool Waste { get; set; }
         public int Boredom { get; set; }
 
+        /*public VirtuaPet()
+        {
+            Hunger = 0;
+        }*/
         
         public void DisplayStats()
         {
@@ -29,16 +33,34 @@ namespace ConsoleApplication9
                 Console.WriteLine("{0} does not need to eliminate.", Name);
             }
             Console.WriteLine("Boredom is at {0}.", Boredom);
+            ActionMenu();
         }
 
         public void ActionMenu()
         {
-            Console.WriteLine("\nWhat would you like to do with {0}?", Name);
+            Console.WriteLine("\nWhat would you like to do with {0}?\n Please type the number:\n", Name);
             Console.WriteLine("1: Feed");
             Console.WriteLine("2: Hydrate");
             Console.WriteLine("3: Let it poop/pee");
-            Console.WriteLine("4: Play ");
+            Console.WriteLine("4: Play");
+            Console.WriteLine("5: Check again");
 
+            int actionChoice = Convert.ToInt32(Console.ReadLine());
+            if (actionChoice == 5)
+            {
+                DisplayStats();
+            }
+
+        }
+
+        public void Tick()
+        {
+            while(Hunger < 10)
+            {
+                Hunger = Hunger + 1;
+                Task.Delay(TimeSpan.FromSeconds(2)).Wait();
+
+            }
         }
 
     }
