@@ -23,7 +23,7 @@ namespace ConsoleApplication9
             while (true)
             {
                 myPet.DisplayStats();
-                myPet.Tick();
+               // myPet.Tick();
                 myPet.ActionMenu();
                
             }

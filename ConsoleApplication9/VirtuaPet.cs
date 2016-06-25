@@ -10,9 +10,10 @@ namespace ConsoleApplication9
     {
         private string name;
         private int hunger { get; set; }
-        private int thirst { get; set; }
+        private double thirst { get; set; }
         private bool waste { get; set; }
-        private int boredom { get; set; }
+        private double boredom { get; set; }
+        private double hungertick { get; set; }
 
         public string Name
         {
@@ -26,8 +27,27 @@ namespace ConsoleApplication9
             }
         }
 
+         
 
+       /* public double Hunger
+        {
+            get
+            {
+                return hunger;
+            }
+            set
+            {
+                hunger = value;
+            }
+        }*/
 
+        public VirtuaPet()
+        {
+            hunger = 0;
+            thirst = 0;
+            boredom = 0;
+            waste = false;
+        }
         /*public VirtuaPet()
         {
             Hunger = 0;
@@ -35,6 +55,7 @@ namespace ConsoleApplication9
         
         public void DisplayStats()
         {
+            
             Console.WriteLine("{0}:", name);
             Console.WriteLine("Hunger is at {0}", hunger);
             Console.WriteLine("Thirst is at {0}", thirst);
@@ -47,6 +68,7 @@ namespace ConsoleApplication9
                 Console.WriteLine("{0} does not need to eliminate.", name);
             }
             Console.WriteLine("Boredom is at {0}.", boredom);
+            Tick();
             ActionMenu();
         }
 
@@ -69,12 +91,18 @@ namespace ConsoleApplication9
 
         public void Tick()
         {
-            while(hunger < 10)
-            {
-                hunger = hunger + 1;
-                Task.Delay(TimeSpan.FromSeconds(2)).Wait();
+            hungertick = hungertick + .4;
+            double hungertemp = hungertick;
+            Math.Round(hungertemp);
+            hunger = Convert.ToInt32(hungertemp);
 
-            }
+            /*while(hunger < 10)
+             {
+                 hunger = hunger + 1;
+                 Task.Delay(TimeSpan.FromSeconds(2)).Wait();
+
+             }
+             */
         }
 
     }
