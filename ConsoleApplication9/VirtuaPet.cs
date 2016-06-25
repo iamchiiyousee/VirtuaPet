@@ -8,11 +8,25 @@ namespace ConsoleApplication9
 {
     class VirtuaPet
     {
-        public string Name { get; set; }
-        public int Hunger { get; set; }
-        public int Thirst { get; set; }
-        public bool Waste { get; set; }
-        public int Boredom { get; set; }
+        private string name;
+        private int hunger { get; set; }
+        private int thirst { get; set; }
+        private bool waste { get; set; }
+        private int boredom { get; set; }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
+
+
 
         /*public VirtuaPet()
         {
@@ -21,24 +35,24 @@ namespace ConsoleApplication9
         
         public void DisplayStats()
         {
-            Console.WriteLine("{0}:", Name);
-            Console.WriteLine("Hunger is at {0}", Hunger);
-            Console.WriteLine("Thirst is at {0}", Thirst);
-            if (Waste == true)
+            Console.WriteLine("{0}:", name);
+            Console.WriteLine("Hunger is at {0}", hunger);
+            Console.WriteLine("Thirst is at {0}", thirst);
+            if (waste == true)
             {
-                Console.WriteLine("{0} needs to poop/pee.", Name);
+                Console.WriteLine("{0} needs to poop/pee.", name);
             }
-            else if (Waste == false)
+            else if (waste == false)
             {
-                Console.WriteLine("{0} does not need to eliminate.", Name);
+                Console.WriteLine("{0} does not need to eliminate.", name);
             }
-            Console.WriteLine("Boredom is at {0}.", Boredom);
+            Console.WriteLine("Boredom is at {0}.", boredom);
             ActionMenu();
         }
 
         public void ActionMenu()
         {
-            Console.WriteLine("\nWhat would you like to do with {0}?\n Please type the number:\n", Name);
+            Console.WriteLine("\nWhat would you like to do with {0}?\n Please type the number:\n", name);
             Console.WriteLine("1: Feed");
             Console.WriteLine("2: Hydrate");
             Console.WriteLine("3: Let it poop/pee");
@@ -55,9 +69,9 @@ namespace ConsoleApplication9
 
         public void Tick()
         {
-            while(Hunger < 10)
+            while(hunger < 10)
             {
-                Hunger = Hunger + 1;
+                hunger = hunger + 1;
                 Task.Delay(TimeSpan.FromSeconds(2)).Wait();
 
             }
