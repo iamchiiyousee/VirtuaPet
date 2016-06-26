@@ -18,17 +18,18 @@ namespace ConsoleApplication9
 
             myPet.Name = Console.ReadLine();
 
-            Console.WriteLine("\nCongratulations, welcome {0} into the world!\n", myPet.Name);
+            Console.WriteLine("\nCongratulations, welcome {0} into the world!", myPet.Name);
 
             while (true)
             {
                 myPet.DisplayStats();
-               // myPet.Tick();
-                myPet.ActionMenu();
+               // myPet.ActionMenu();
+
+
                
             }
 
-            //Console.ReadKey();
+
          }
 
 

@@ -12,8 +12,9 @@ namespace ConsoleApplication9
         private int hunger { get; set; }
         private double thirst { get; set; }
         private bool waste { get; set; }
-        private double boredom { get; set; }
+        private int boredom { get; set; }
         private double hungertick { get; set; }
+
 
         public string Name
         {
@@ -56,7 +57,7 @@ namespace ConsoleApplication9
         public void DisplayStats()
         {
             
-            Console.WriteLine("{0}:", name);
+            Console.WriteLine("\n{0}:", name);
             Console.WriteLine("Hunger is at {0}", hunger);
             Console.WriteLine("Thirst is at {0}", thirst);
             if (waste == true)
@@ -82,11 +83,57 @@ namespace ConsoleApplication9
             Console.WriteLine("5: Check again");
 
             int actionChoice = Convert.ToInt32(Console.ReadLine());
+
             if (actionChoice == 5)
             {
                 DisplayStats();
             }
+            else if (actionChoice == 1)
+            {
+                FeedMethod();
+            }
+           else if (actionChoice == 2)
+            {
+                HydrateMethod();
+            }
+            else if (actionChoice == 3)
+            {
+                PoopMethod();
+            }
+           else if (actionChoice == 4)
+            {
+                PlayMethod();
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid option.");
+                ActionMenu();
+            }
 
+        }
+
+        private void PlayMethod()
+        {
+            hunger++;
+            thirst++;
+            boredom = Convert.ToInt32( boredom * .5);
+            Console.WriteLine("\nYou played with {0}!\n", Name);
+            Console.WriteLine("Hunger went up by 1!\nThirst went up by 1!\nBoredom went down by half!");
+        }
+
+        private void PoopMethod()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void HydrateMethod()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FeedMethod()
+        {
+            throw new NotImplementedException();
         }
 
         public void Tick()
@@ -95,6 +142,8 @@ namespace ConsoleApplication9
             double hungertemp = hungertick;
             Math.Round(hungertemp);
             hunger = Convert.ToInt32(hungertemp);
+
+            boredom++;
 
             /*while(hunger < 10)
              {
