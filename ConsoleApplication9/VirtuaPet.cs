@@ -11,9 +11,13 @@ namespace ConsoleApplication9
         private string name;
         private int hunger { get; set; }
         private double thirst { get; set; }
-        private bool waste { get; set; }
+        private bool poop { get; set; }
+        private bool pee { get; set; }
         private int boredom { get; set; }
-        private double hungertick { get; set; }
+        private double hungerTick { get; set; }
+        private double thirstTick { get; set; }
+        private int peeTick { get; set; }
+        private int poopTick { get; set; }
 
 
         public string Name
@@ -47,7 +51,8 @@ namespace ConsoleApplication9
             hunger = 0;
             thirst = 0;
             boredom = 0;
-            waste = false;
+            poop = false;
+            pee = false;
         }
         /*public VirtuaPet()
         {
@@ -60,13 +65,21 @@ namespace ConsoleApplication9
             Console.WriteLine("\n{0}:", name);
             Console.WriteLine("Hunger is at {0}", hunger);
             Console.WriteLine("Thirst is at {0}", thirst);
-            if (waste == true)
+            if (poop == true)
             {
-                Console.WriteLine("{0} needs to poop/pee.", name);
+                Console.WriteLine("!!!{0} needs to poop!!!", name);
             }
-            else if (waste == false)
+            else if (poop == false)
             {
-                Console.WriteLine("{0} does not need to poop/pee.", name);
+                Console.WriteLine("{0} does not need to poop.", name);
+            }
+            if (pee == true)
+            {
+                Console.WriteLine("!!!{0} needs to pee!!!", name);
+            }
+            else if (pee == false)
+            {
+                Console.WriteLine("{0} does not need to pee.", name);
             }
             Console.WriteLine("Boredom is at {0}.", boredom);
             Tick();
@@ -78,13 +91,14 @@ namespace ConsoleApplication9
             Console.WriteLine("\nWhat would you like to do with {0}?\n Please type the number:\n", name);
             Console.WriteLine("1: Feed");
             Console.WriteLine("2: Hydrate");
-            Console.WriteLine("3: Let it poop/pee");
-            Console.WriteLine("4: Play");
-            Console.WriteLine("5: Check again");
+            Console.WriteLine("3: Let it poop");
+            Console.WriteLine("4: Let it pee");
+            Console.WriteLine("5: Play");
+            Console.WriteLine("6: Check again");
 
             int actionChoice = Convert.ToInt32(Console.ReadLine());
 
-            if (actionChoice == 5)
+            if (actionChoice == 6)
             {
                 DisplayStats();
             }
@@ -100,7 +114,11 @@ namespace ConsoleApplication9
             {
                 PoopMethod();
             }
-           else if (actionChoice == 4)
+            else if (actionChoice == 4)
+            {
+                PeeMethod();
+            }
+           else if (actionChoice == 5)
             {
                 PlayMethod();
             }
@@ -112,36 +130,60 @@ namespace ConsoleApplication9
 
         }
 
+        private void PeeMethod()
+        {
+            pee = false;
+            Console.WriteLine("{0} went pee!", name);
+        }
+
         private void PlayMethod()
         {
             hunger++;
             thirst++;
-            boredom = Convert.ToInt32( boredom * .5);
+            boredom = Convert.ToInt32( boredom * .4);
             Console.WriteLine("\nYou played with {0}!\n", Name);
-            Console.WriteLine("Hunger went up by 1!\nThirst went up by 1!\nBoredom went down by half!");
+            Console.WriteLine("Hunger went up!\nThirst went up!\nBoredom went down!");
         }
 
         private void PoopMethod()
         {
-            throw new NotImplementedException();
+            poop = false;
+            Console.WriteLine("{0} went poop!");
         }
 
         private void HydrateMethod()
         {
-            throw new NotImplementedException();
+            peeTick++;
+            thirst = 0;
+            thirstTick = 0;
+            if (peeTick > 5)
+            {
+                pee = true;
+            }
         }
 
         private void FeedMethod()
         {
-            throw new NotImplementedException();
+            poopTick++;
+            hunger = 0;
+            hungerTick = 0;
+            if (poopTick > 5)
+            {
+                poop = true;
+            }
         }
 
         public void Tick()
         {
-            hungertick = hungertick + .4;
-            double hungertemp = hungertick;
+            hungerTick = hungerTick + .4;
+            double hungertemp = hungerTick;
             Math.Round(hungertemp);
             hunger = Convert.ToInt32(hungertemp);
+
+            thirstTick = thirstTick + .4;
+            double thirstTemp = thirstTick;
+            Math.Round(thirstTemp);
+            thirst = Convert.ToInt32(thirstTemp);
 
             boredom++;
 
