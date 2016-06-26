@@ -65,7 +65,7 @@ namespace ConsoleApplication9
             }
             else if (waste == false)
             {
-                Console.WriteLine("{0} does not need to eliminate.", name);
+                Console.WriteLine("{0} does not need to poop/pee.", name);
             }
             Console.WriteLine("Boredom is at {0}.", boredom);
             Tick();
