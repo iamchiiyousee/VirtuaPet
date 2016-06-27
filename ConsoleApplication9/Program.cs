@@ -17,9 +17,9 @@ namespace ConsoleApplication9
 
             myPet.Name = Console.ReadLine();
 
-            Console.WriteLine("Great! Please enter the type of pet:");
+            displayChoice();
 
-            string petDisplay = Console.ReadLine();
+            
 
             Console.WriteLine("\nCongratulations, welcome {0} into the world!", myPet.Name);
 
@@ -57,11 +57,19 @@ namespace ConsoleApplication9
             Console.ReadKey();
          }
 
+        private static void displayChoice()
+        {
+            Console.WriteLine("Great! Please enter the type of pet:");
+            Console.WriteLine("1: Cat");
+            Console.WriteLine("2: Dog");
+            Console.WriteLine("3: Snake");
 
+            int petDisplay = Convert.ToInt32(Console.ReadLine());
+        }
 
         private static void displayPet()
         {
-            
+            displayChoice();
         }
     }
 }
