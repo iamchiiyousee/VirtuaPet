@@ -9,13 +9,13 @@ namespace ConsoleApplication9
     class VirtuaPet
     {
         private string name;
-        public int hunger { get; set; }
-        public int thirst { get; set; }
+        public double hunger { get; set; }
+        public double thirst { get; set; }
         private bool poop { get; set; }
         private bool pee { get; set; }
         private int boredom { get; set; }
-        private double hungerTick { get; set; }
-        decimal thirstTick { get; set; }
+       // private double hungerTick { get; set; }
+       // private double thirstTick { get; set; }
         private int peeTick { get; set; }
         private int poopTick { get; set; }
 
@@ -87,8 +87,8 @@ namespace ConsoleApplication9
             peedItself();
 
             Console.WriteLine("\n{0}:", Name);
-            Console.WriteLine("Hunger is at {0}", hunger);
-            Console.WriteLine("Thirst is at {0}", thirst);
+            Console.WriteLine("Hunger is at {0}", Math.Round(hunger, MidpointRounding.AwayFromZero));
+            Console.WriteLine("Thirst is at {0}", Math.Round(thirst, MidpointRounding.AwayFromZero));
             if (poop == true)
             {
                 Console.WriteLine("!!!{0} needs to poop!!!", Name);
@@ -211,8 +211,8 @@ namespace ConsoleApplication9
         /// </summary>
         private void PlayMethod()
         {
-            hungerTick++;
-            thirstTick++;
+            hunger++;
+            thirst++;
             boredom = Convert.ToInt32( boredom * .4);
             Console.WriteLine("\nYou played with {0}!\n", Name);
             Console.WriteLine("Hunger went up!\nThirst went up!\nBoredom went down!");
@@ -223,7 +223,7 @@ namespace ConsoleApplication9
         private void PoopMethod()
         {
             poopTick = 0;
-            Console.WriteLine("{0} went poop!");
+            Console.WriteLine("{0} went poop!", Name);
         }
         /// <summary>
         /// Removes thirst points and clears the counter. Adds pee points.
@@ -232,7 +232,7 @@ namespace ConsoleApplication9
         {
             peeTick++;
             thirst = 0;
-            thirstTick = 0;
+            //thirstTick = 0;
 
         }
         /// <summary>
@@ -242,7 +242,7 @@ namespace ConsoleApplication9
         {
             poopTick++;
             hunger = 0;
-            hungerTick = 0;
+            //hungerTick = 0;
 
         }
         /// <summary>
@@ -250,17 +250,17 @@ namespace ConsoleApplication9
         /// </summary>
         public void Tick()
         {
-            //Math.Round has a tendency to cause hunger to stay at the same number 3 times in a row and leads to inconsistent counting for the hunger counter.
-            hungerTick = hungerTick + .5;
-            double hungertemp = hungerTick;
-            Math.Round(hungertemp);
-            hunger = Convert.ToInt32(hungertemp);
+            //Convert has a tendency to cause hunger to stay at the same number 3 times in a row and leads to inconsistent counting for the hunger counter.
+            hunger = hunger + .5;
+            //double hungertemp = hungerTick;
+           // Math.Round(hungertemp);
+           // hunger = hungerTick;
 
             //I tried another way but it's still the same.
-            thirstTick = thirstTick + Convert.ToDecimal(.5);
-            decimal thirstTemp = thirstTick;
-            Math.Round(thirstTemp, MidpointRounding.AwayFromZero);
-            thirst = Convert.ToInt32(thirstTemp);
+            thirst = thirst + .5;
+            //double thirstTemp = thirstTick;
+           // Math.Round(thirstTemp, MidpointRounding.AwayFromZero);
+            //thirst = thirstTick;
 
             boredom++;
 
