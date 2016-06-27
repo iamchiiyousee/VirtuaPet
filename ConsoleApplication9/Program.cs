@@ -28,22 +28,32 @@ namespace ConsoleApplication9
 
                 displayPet();
                 myPet.DisplayStats();
-               // myPet.ActionMenu();
+                // myPet.ActionMenu();
 
-           
-               
+
+
             }
-
-            if (myPet.hunger > 10)
+            if (myPet.hunger == myPet.thirst)
             {
-                Console.WriteLine("\n!!!{0} has died of hunger!!!", myPet.Name);
+                Console.WriteLine("\n-----------------------------");
+                Console.WriteLine("{0} has died of either hunger, or thirst, or both. Either way it's\n dead and you're a terrible owner. I'm calling the ASPCA.", myPet.Name);
+                Console.WriteLine("-----------------------------");
             }
-            else if (myPet.thirst > 10)
+            else if (myPet.hunger > myPet.thirst)
             {
-                Console.WriteLine("\n!!!{0} has died of thirst!!!", myPet.Name);
+                Console.WriteLine("\n-----------------------------------");
+                Console.WriteLine("!!!{0} has died of hunger!!!", myPet.Name);
+                Console.WriteLine("-----------------------------------");
             }
+            else if (myPet.thirst > myPet.hunger)
+            {
+                Console.WriteLine("\n-----------------------------------");
+                Console.WriteLine("!!!{0} has died of thirst!!!", myPet.Name);
+                Console.WriteLine("-----------------------------------");
+            }
+            
 
-            Console.WriteLine("Press enter to exit.");
+            Console.WriteLine("\nPress enter to exit.");
             Console.ReadKey();
          }
 

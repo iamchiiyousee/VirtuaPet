@@ -34,17 +34,7 @@ namespace ConsoleApplication9
 
          
 
-       /* public double Hunger
-        {
-            get
-            {
-                return hunger;
-            }
-            set
-            {
-                hunger = value;
-            }
-        }*/
+
 
         public VirtuaPet()
         {
@@ -54,10 +44,7 @@ namespace ConsoleApplication9
             poop = false;
             pee = false;
         }
-        /*public VirtuaPet()
-        {
-            Hunger = 0;
-        }*/
+
         /// <summary>
         /// Determines whether the pet is alive using the hunger and thirst counters.
         /// </summary>
@@ -69,10 +56,7 @@ namespace ConsoleApplication9
 
                 return true;
             }
-           /* if (thirst <= 10)
-            {
-                return true;
-            }*/
+
             else
             {
                 return false;
@@ -118,7 +102,9 @@ namespace ConsoleApplication9
             if (peeTick == 8)
             {
                 peeTick = 0;
-                Console.WriteLine("!!!\n{0} peed on your carpet! \n!!!", Name);
+                Console.WriteLine("-----------------------------");
+                Console.WriteLine("!!!{0} peed on your carpet!!!", Name);
+                Console.WriteLine("-----------------------------");
             }
             if (peeTick > 5)
             {
@@ -140,7 +126,9 @@ namespace ConsoleApplication9
             if (poopTick == 8)
             {
                 poopTick = 0;
-                Console.WriteLine("!!!\n{0} pooped on your carpet!\n!!!", Name);
+                Console.WriteLine("-----------------------------");
+                Console.WriteLine("!!!{0} pooped on your carpet!!!", Name);
+                Console.WriteLine("-----------------------------");
             }
 
             if (poopTick > 5)
@@ -193,7 +181,9 @@ namespace ConsoleApplication9
             }
             else
             {
+                Console.WriteLine("-----------------------------");
                 Console.WriteLine("Please enter a valid option.");
+                Console.WriteLine("-----------------------------");
                 ActionMenu();
             }
 
@@ -204,7 +194,9 @@ namespace ConsoleApplication9
         private void PeeMethod()
         {
             peeTick = 0;
+            Console.WriteLine("\n-----------------------------");
             Console.WriteLine("{0} went pee!", Name);
+            Console.WriteLine("-----------------------------");
         }
         /// <summary>
         /// Reduces the boredom counter by .6 and adds 1 to hunger and thirst.
@@ -214,8 +206,10 @@ namespace ConsoleApplication9
             hunger++;
             thirst++;
             boredom = Convert.ToInt32( boredom * .4);
-            Console.WriteLine("\nYou played with {0}!\n", Name);
+            Console.WriteLine("\n-----------------------------");
+            Console.WriteLine("You played with {0}!\n", Name);
             Console.WriteLine("Hunger went up!\nThirst went up!\nBoredom went down!");
+            Console.WriteLine("-----------------------------");
         }
         /// <summary>
         /// Pet clears its bowels and the counter is reset.
@@ -223,7 +217,9 @@ namespace ConsoleApplication9
         private void PoopMethod()
         {
             poopTick = 0;
+            Console.WriteLine("\n-----------------------------");
             Console.WriteLine("{0} went poop!", Name);
+            Console.WriteLine("-----------------------------");
         }
         /// <summary>
         /// Removes thirst points and clears the counter. Adds pee points.
@@ -232,6 +228,9 @@ namespace ConsoleApplication9
         {
             peeTick++;
             thirst = 0;
+            Console.WriteLine("\n-----------------------------");
+            Console.WriteLine("{0} drank! \nThirst went down!", Name);
+            Console.WriteLine("-----------------------------");
             //thirstTick = 0;
 
         }
@@ -242,6 +241,9 @@ namespace ConsoleApplication9
         {
             poopTick++;
             hunger = 0;
+            Console.WriteLine("\n-----------------------------");
+            Console.WriteLine("{0} ate! \nHunger went down!", Name);
+            Console.WriteLine("-----------------------------");
             //hungerTick = 0;
 
         }
@@ -250,7 +252,7 @@ namespace ConsoleApplication9
         /// </summary>
         public void Tick()
         {
-            //Convert has a tendency to cause hunger to stay at the same number 3 times in a row and leads to inconsistent counting for the hunger counter.
+            //Fixed and refactored the hunger and thirst ticking.
             hunger = hunger + .5;
             //double hungertemp = hungerTick;
            // Math.Round(hungertemp);
