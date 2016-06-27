@@ -200,13 +200,17 @@ namespace ConsoleApplication9
             Console.WriteLine("\nYou played with {0}!\n", Name);
             Console.WriteLine("Hunger went up!\nThirst went up!\nBoredom went down!");
         }
-
+        /// <summary>
+        /// Pet clears its bowels and the counter is reset.
+        /// </summary>
         private void PoopMethod()
         {
             poop = false;
             Console.WriteLine("{0} went poop!");
         }
-
+        /// <summary>
+        /// Removes thirst points and clears the counter. Adds pee points.
+        /// </summary>
         private void HydrateMethod()
         {
             peeTick++;
@@ -214,7 +218,9 @@ namespace ConsoleApplication9
             thirstTick = 0;
 
         }
-
+        /// <summary>
+        /// Removes hunger points and clears the counter. Adds poop points.
+        /// </summary>
         private void FeedMethod()
         {
             poopTick++;
@@ -222,14 +228,18 @@ namespace ConsoleApplication9
             hungerTick = 0;
 
         }
-
+        /// <summary>
+        /// Adds 1 hunger and thirst point every 2 times Tick is called. Adds 1 boredom point every time Tick is called.
+        /// </summary>
         public void Tick()
         {
+            //Math.Round has a tendency to cause hunger to stay at the same number 3 times in a row and leads to inconsistent counting for the hunger counter.
             hungerTick = hungerTick + .5;
             double hungertemp = hungerTick;
             Math.Round(hungertemp);
             hunger = Convert.ToInt32(hungertemp);
 
+            //I tried another way but it's still the same.
             thirstTick = thirstTick + Convert.ToDecimal(.5);
             decimal thirstTemp = thirstTick;
             Math.Round(thirstTemp, MidpointRounding.AwayFromZero);
