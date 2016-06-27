@@ -58,7 +58,10 @@ namespace ConsoleApplication9
         {
             Hunger = 0;
         }*/
-
+        /// <summary>
+        /// Determines whether the pet is alive using the hunger and thirst counters.
+        /// </summary>
+        /// <returns>Whether pet is alive or dead.</returns>
         public bool IsAlive()
         {
             if (hunger <= 10 & thirst <=10)
@@ -75,7 +78,9 @@ namespace ConsoleApplication9
                 return false;
             }
         }
-        
+        /// <summary>
+        /// Displays pet stats, checks the poop and pee counters, runs the hunger and thirst ticks, continues onto the menu.
+        /// </summary>
         public void DisplayStats()
         {
             poopedItself();
@@ -104,7 +109,10 @@ namespace ConsoleApplication9
             Tick();
             ActionMenu();
         }
-
+        /// <summary>
+        /// Reads the pee counter and determines whether or not the pet needs to pee. If the pee counter reaches a certain point,
+        /// the counter is cleared and a message displays that the pet has peed itself.
+        /// </summary>
         private void peedItself()
         {
             if (peeTick == 8)
@@ -122,7 +130,10 @@ namespace ConsoleApplication9
             }
 
         }
-
+        /// <summary>
+        /// Reads the poop counter and determines whether or not the pet needs to poop. If the poop counter reaches a certain point,
+        /// the counter is cleared and a message displays that the pet has pooped itself.
+        /// </summary>
         private void poopedItself()
         {
            
@@ -141,7 +152,9 @@ namespace ConsoleApplication9
                 poop = false;
             }
         }
-
+        /// <summary>
+        /// Displays list of options and uses input to call the specified method.
+        /// </summary>
         public void ActionMenu()
         {
             Console.WriteLine("\nWhat would you like to do with {0}?\n Please type the number:\n", Name);
@@ -185,13 +198,17 @@ namespace ConsoleApplication9
             }
 
         }
-
+        /// <summary>
+        /// Clears the pee counter and displays that the pet has peed.
+        /// </summary>
         private void PeeMethod()
         {
-            pee = false;
+            peeTick = 0;
             Console.WriteLine("{0} went pee!", Name);
         }
-
+        /// <summary>
+        /// Reduces the boredom counter by .6 and adds 1 to hunger and thirst.
+        /// </summary>
         private void PlayMethod()
         {
             hungerTick++;
@@ -205,7 +222,7 @@ namespace ConsoleApplication9
         /// </summary>
         private void PoopMethod()
         {
-            poop = false;
+            poopTick = 0;
             Console.WriteLine("{0} went poop!");
         }
         /// <summary>
