@@ -10,23 +10,30 @@ namespace ConsoleApplication9
     {
         static void Main(string[] args)
         {
+        
             VirtuaPet myPet = new VirtuaPet();
+            displaypet freakingdisplay = new displaypet();
+
 
             Console.WriteLine("Welcome to VirtuaPet.\nPlease enter the name of your pet.");
-            
-
             myPet.Name = Console.ReadLine();
 
-            displayChoice();
 
-            
+            Console.WriteLine("\nGreat! Please enter the type of pet:");
+            Console.WriteLine("1: Cat");
+            Console.WriteLine("2: Dog");
+            Console.WriteLine("3: Snake");
+            Console.WriteLine("4: Other");
+
+            freakingdisplay.petDisplay = Convert.ToInt32(Console.ReadLine());
+
 
             Console.WriteLine("\nCongratulations, welcome {0} into the world!", myPet.Name);
 
             while (myPet.IsAlive())
             {
 
-                displayPet();
+                freakingdisplay.displayChoice();
                 myPet.DisplayStats();
                 // myPet.ActionMenu();
 
@@ -57,19 +64,8 @@ namespace ConsoleApplication9
             Console.ReadKey();
          }
 
-        private static void displayChoice()
-        {
-            Console.WriteLine("Great! Please enter the type of pet:");
-            Console.WriteLine("1: Cat");
-            Console.WriteLine("2: Dog");
-            Console.WriteLine("3: Snake");
+ 
 
-            int petDisplay = Convert.ToInt32(Console.ReadLine());
-        }
 
-        private static void displayPet()
-        {
-            displayChoice();
-        }
     }
 }
