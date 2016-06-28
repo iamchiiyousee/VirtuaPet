@@ -20,7 +20,9 @@ namespace ConsoleApplication9
                 petdisplay = value;
             }
         }
-
+        /// <summary>
+        /// Displays the user's selection of animal.
+        /// </summary>
         public void displayChoice()
         {
 
